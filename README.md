@@ -6,6 +6,7 @@ hpd  Hex Port Dump
 Ed Rantanen
 
 Date 03 oct 2012
+
 Version 00002.a
 
 
@@ -27,7 +28,7 @@ Version 00002.a
       struct ipheader {
      	 unsigned char      iph_ihl:5,
                             iph_ver:4;
-	 unsigned char      iph_tos;
+         unsigned char      iph_tos;
          unsigned short int iph_len;
          unsigned short int iph_ident;
          unsigned char      iph_flags;
@@ -58,8 +59,8 @@ To run
 
 root@xman:/programs_c/hpd# ./hpd 
 Listenning...
-6 4500  002C  0C9B  0000  4006  E39C  CC5D  B228  0A00  020F 
-6 4500  002C  0C9E  0000  4006  EA96  4272  3517  0A00  020F 
+6 4500  002C  0C9B  0000  4006  E39C  CC5D  B228  0A00  020F
+6 4500  002C  0C9E  0000  4006  EA96  4272  3517  0A00  020F
 6 4500  002C  0C9F  0000  4006  F659  ADDF  BDE5  0A00  020F
 6 4500  002C  0CA1  0000  4006  3352  4A7D  E44D  0A00  020F
 6 4500  0028  0CA2  0000  4006  3355  4A7D  E44D  0A00  020F
