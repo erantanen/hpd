@@ -1,11 +1,10 @@
-#include<stdio.h>       //For standard things
-#include<stdlib.h>      //malloc
-#include<string.h>      //memset
-#include<netinet/if_ether.h>  // for ETH_P_ALL
+#include<stdio.h>               //For standard things
+#include<stdlib.h>              //malloc
+#include<string.h>              //memset
 #include<netinet/ip_icmp.h>     //Provides declarations for icmp header
-#include<netinet/udp.h> //Provides declarations for udp header
-#include<netinet/tcp.h> //Provides declarations for tcp header
-#include<netinet/ip.h>  //Provides declarations for ip header
+#include<netinet/udp.h>         //Provides declarations for udp header
+#include<netinet/tcp.h>         //Provides declarations for tcp header
+#include<netinet/ip.h>          //Provides declarations for ip header
 #include<sys/socket.h>
 #include<arpa/inet.h>
 
@@ -27,7 +26,7 @@ int main()
 
         unsigned char *buffer = (unsigned char *)malloc(65536); //Its Big!
 
-        printf("Starting...\n");
+        printf("Listening ...\n");
 
         //Create a raw socket that shall sniff
            sock_raw = socket(AF_INET , SOCK_RAW, IPPROTO_TCP);
@@ -36,9 +35,12 @@ int main()
                 printf("Socket Error\n");
                 return 1;
         }
+      
+        printf("A raw socket is open\n\n");
+
         while(1)
         { 
- 
+                
   
                 saddr_size = sizeof saddr;
                 //Receive a packet
@@ -49,9 +51,12 @@ int main()
                         return 1;
                 }
                 //Now process the packet
-
+              
                struct iphdr *iph = (struct iphdr *)buffer;
                  iphdrlen =iph->ihl*4;
+
+                     
+
                Print_Info(buffer , iphdrlen);
         }
         close(sock_raw);
@@ -64,8 +69,11 @@ int main()
 void Print_Info(unsigned char* data , int d_length)
 {
     int incr;
-     
-      printf("IP Header info\n");
+    struct iphdr *iph = (struct iphdr*)data;   
+    unsigned char prot = iph->protocol; 
+         
+
+      printf("%x", prot);
  
       for(incr = 0; incr < d_length ; incr+=2){ 
        printf(" %02X%02X ", data[incr], data[incr+1]);    
