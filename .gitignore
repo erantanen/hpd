@@ -1,0 +1,4 @@
+*.o
+source.old
+*.swp
+a.out
