@@ -11,7 +11,7 @@ CFLAGS=-Wall -O
 SRC1=hpd.c
 OBJ1=$(SRC1:.c=.o)
 
-P1=hfd
+P1=hpd
 
 
 all:  $(P1) 
