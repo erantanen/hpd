@@ -10,8 +10,8 @@
 
 
 
-void Print_Info(unsigned char* , int);
-
+void Print_Hex(unsigned char* , int);
+void Print_Addr(unsigned char* , int);
 
 
 int sock_raw;
@@ -57,7 +57,8 @@ int main()
 
                      
 
-               Print_Info(buffer , iphdrlen);
+               Print_Hex(buffer , iphdrlen);
+
         }
         close(sock_raw);
         printf("Finished");
@@ -66,20 +67,51 @@ int main()
 
 
 
-void Print_Info(unsigned char* data , int d_length)
+void Print_Hex(unsigned char* data , int d_length)
 {
     int incr;
-    struct iphdr *iph = (struct iphdr*)data;   
-    unsigned char prot = iph->protocol; 
-         
+    char q_address[16];      
 
-      printf("%x", prot);
+     if(d_length < 20) {
+         printf("Fragmented Header\n");
+       } else {
+
+         for(incr = 0; incr < d_length-4 ; incr+=2){ 
+           printf(" %02X%02X ", data[incr], data[incr+1]);    
+         }
  
-      for(incr = 0; incr < d_length ; incr+=2){ 
-       printf(" %02X%02X ", data[incr], data[incr+1]);    
+        sprintf(q_address, "%d.%d.%d.%d", (int)data[incr], (int)data[incr+1], (int)data[incr+2], (int)data[incr+3]);
+        printf(" %s", q_address);      
+   
+        printf("  \n");
+     }
+}
 
+
+
+
+void Print_Addr(unsigned char* data , int d_length)
+{
+    int incr;
+    struct iphdr *iph = (struct iphdr*)data;
+
+       printf("%d ", iph->saddr);
+       printf("%d ", iph->daddr);
+   
+       printf("%d ", 16 - 'A');
+
+
+      for(incr = 0; incr < d_length ; incr+=2){
+       printf(" %02X%02X ", data[incr], data[incr+1]);
        }
-      
+
      printf("  \n");
 
 }
+
+
+
+
+
+
+
