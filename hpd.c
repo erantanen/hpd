@@ -8,7 +8,14 @@
 #include<sys/socket.h>
 #include<arpa/inet.h>
 
+// hex port dump 
+//
 
+// Ed Rantanen
+
+//updated 07 oct 2012
+//
+// version?
 
 void Print_Hex(unsigned char* , int);
 void Print_Addr(unsigned char* , int);

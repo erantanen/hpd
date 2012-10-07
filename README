@@ -5,8 +5,8 @@ hpd  Hex Port Dump
 
 Ed Rantanen
 
-Date 03 oct 2012
-Version 00002.a
+up->Date 03 oct 2012
+Version 00004.a
 
 
  This is an inital experiment in "Promiscuous mode" socket capture.
