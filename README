@@ -49,6 +49,7 @@ To compile
 
 To run
 ----------
+sudo or su -
  ./hpd
 
  To see results

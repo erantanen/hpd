@@ -36,8 +36,10 @@ int main()
         printf("Listening ...\n");
 
         //Create a raw socket that shall sniff
-           sock_raw = socket(AF_INET , SOCK_RAW, IPPROTO_TCP);
-        if(sock_raw < 0)
+        //   sock_raw = socket(AF_INET , SOCK_RAW, IPPROTO_TCP);
+         sock_raw = socket(PF_INET , SOCK_RAW, IPPROTO_TCP);  
+     
+       if(sock_raw < 0)
         {
                 printf("Socket Error\n");
                 return 1;
@@ -51,7 +53,12 @@ int main()
   
                 saddr_size = sizeof saddr;
                 //Receive a packet
-                data_size = recvfrom(sock_raw , buffer , 65536 , 0 , &saddr , &saddr_size);
+                data_size = recvfrom(sock_raw ,
+                                       buffer ,
+                                        65536 ,
+                                            0 ,
+                                       &saddr ,
+                                    &saddr_size);
                 if(data_size <0 )
                 {
                         printf("Recvfrom error , failed to get packets\n");
@@ -62,7 +69,7 @@ int main()
                struct iphdr *iph = (struct iphdr *)buffer;
                  iphdrlen =iph->ihl*4;
 
-                     
+             //  Print_Addr(buffer, iphdrlen);                     
 
                Print_Hex(buffer , iphdrlen);
 
@@ -83,13 +90,18 @@ void Print_Hex(unsigned char* data , int d_length)
          printf("Fragmented Header\n");
        } else {
 
-         for(incr = 0; incr < d_length-4 ; incr+=2){ 
+         for(incr = 0; incr < d_length-8 ; incr+=2){ 
            printf(" %02X%02X ", data[incr], data[incr+1]);    
          }
  
         sprintf(q_address, "%d.%d.%d.%d", (int)data[incr], (int)data[incr+1], (int)data[incr+2], (int)data[incr+3]);
-        printf(" %s", q_address);      
-   
+        printf(" %s", q_address);
+
+        sprintf(q_address, "%d.%d.%d.%d", (int)data[incr+4], (int)data[incr+5], (int)data[incr+6], (int)data[incr+7]);
+        printf(" %s", q_address);
+  
+
+ 
         printf("  \n");
      }
 }
