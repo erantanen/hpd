@@ -54,24 +54,27 @@ sudo or su -
 
  To see results
 ---------------
+ Open another window than what you run the program in
+ and run some thing like. 
 
- Open a browser and surf someplace and this is what you should see. 
-
-root@xman:/programs_c/hpd# ./hpd 
-Listenning...
-6 4500  002C  0C9B  0000  4006  E39C  CC5D  B228  0A00  020F 
-6 4500  002C  0C9E  0000  4006  EA96  4272  3517  0A00  020F 
-6 4500  002C  0C9F  0000  4006  F659  ADDF  BDE5  0A00  020F
-6 4500  002C  0CA1  0000  4006  3352  4A7D  E44D  0A00  020F
-6 4500  0028  0CA2  0000  4006  3355  4A7D  E44D  0A00  020F
-6 4500  05B2  0CFA  0000  4006  2D66  4A7D  E45A  0A00  020F
-6 4500  05B2  0CFB  0000  4006  2D65  4A7D  E45A  0A00  020F 
-6 4500  0514  0CFC  0000  4006  2E02  4A7D  E45A  0A00  020F 
-6 4500  05B2  0CFD  0000  4006  2D63  4A7D  E45A  0A00  020F 
+VirtualBox:~$ wget google.com
 
 
+----------------------------
+dink@dink-VirtualBox:~/programs_c/hpd$ sudo ./hpd 
+Listening ...
+A raw socket is open
 
-
+ 4500  002C  00F5  0000  4006  4085  74.125.226.198 10.0.2.15  
+ 4500  0028  00F6  0000  4006  4088  74.125.226.198 10.0.2.15  
+ 4500  0261  00F9  0000  4006  3E4C  74.125.226.198 10.0.2.15  
+ 4500  002C  00FC  0000  4006  9FDB  74.125.131.105 10.0.2.15  
+ 4500  0028  00FD  0000  4006  9FDE  74.125.131.105 10.0.2.15  
+ 4500  0568  00FE  0000  4006  9A9D  74.125.131.105 10.0.2.15  
+ 4500  0568  00FF  0000  4006  9A9C  74.125.131.105 10.0.2.15  
+ 4500  0028  0100  0000  4006  407E  74.125.226.198 10.0.2.15  
+ 4500  0568  0101  0000  4006  9A9A  74.125.131.105 10.0.2.15  
+ 4500  0568  0102  0000  4006  9A99  74.125.131.105 10.0.2.15  
 
 
 
