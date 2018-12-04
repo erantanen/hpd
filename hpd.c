@@ -1,3 +1,4 @@
+#include <getopt.h>
 #include<stdio.h>               //For standard things
 #include<stdlib.h>              //malloc
 #include<string.h>              //memset
@@ -13,7 +14,7 @@
 
 // Ed Rantanen
 
-//updated 07 oct 2012
+//updated 3 dec 2018
 //
 // version?
 
@@ -24,11 +25,11 @@ void Print_Addr(unsigned char* , int);
 int sock_raw;
 struct sockaddr_in source,dest;
 
-int main()
+int main(int argc, char *argv[])
 {
         int saddr_size , data_size;
         struct sockaddr saddr;
-        struct in_addr in;
+//        struct in_addr in;
         unsigned short iphdrlen;
 
         unsigned char *buffer = (unsigned char *)malloc(65536); //Its Big!

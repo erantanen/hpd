@@ -1,9 +1,12 @@
 #
 
 #
-#MAKEFILE FOR hfd
+#MAKEFILE FOR hpd
 #
-#Date created 20 sep 2012
+
+# update 03 dec 2018
+#	preparing to expand program 
+#created 20 sep 2012
 
 
 CC=gcc
@@ -14,13 +17,23 @@ OBJ1=$(SRC1:.c=.o)
 P1=hpd
 
 
-all:  $(P1) 
-	@echo created programs $(P1)  ...
+#all:  $(P1) 
+#	@echo created programs $(P1)  ...
 
 
 	
-$(P1): $(SRC1)
-	$(CC) $(CFLAGS) -o $@ $<
+#$(P1): $(SRC1)
+#	$(CC) $(CFLAGS) -o $@ $<
+
+
+#kinda lazy at moment 
+build:
+	gcc -Wall -g -o hpd hpd.c
+	@echo -
+	@echo created program $(P1)  ...
+	@echo -
 	
+clean:
+	rm $(P1)
 
 
